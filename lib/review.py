@@ -56,10 +56,10 @@ class Review:
    
     @classmethod
     def instance_from_db(cls, row):
-        """Return an Review instance having the attribute values from the table row."""
-        # Check the dictionary for  existing instance using the row's primary key
-        pass
-   
+        if row:
+            review = cls(row[1], row[2], row[3])
+            review.id = row[0]
+        return review
 
     @classmethod
     def find_by_id(cls, id):
